@@ -14,6 +14,7 @@
 		0CAFD7232494F04D00ED5E87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CAFD7222494F04D00ED5E87 /* Assets.xcassets */; };
 		0CAFD7262494F04D00ED5E87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CAFD7242494F04D00ED5E87 /* LaunchScreen.storyboard */; };
 		0CAFD7302495086000ED5E87 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFD72F2495086000ED5E87 /* GameScene.swift */; };
+		0CAFD732249A5FA500ED5E87 /* itemSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0CAFD731249A5FA500ED5E87 /* itemSound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0CAFD7252494F04D00ED5E87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CAFD7272494F04D00ED5E87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CAFD72F2495086000ED5E87 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		0CAFD731249A5FA500ED5E87 /* itemSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = itemSound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				0CAFD71D2494F04900ED5E87 /* ViewController.swift */,
 				0CAFD72F2495086000ED5E87 /* GameScene.swift */,
 				0CAFD71F2494F04900ED5E87 /* Main.storyboard */,
+				0CAFD731249A5FA500ED5E87 /* itemSound.mp3 */,
 				0CAFD7222494F04D00ED5E87 /* Assets.xcassets */,
 				0CAFD7242494F04D00ED5E87 /* LaunchScreen.storyboard */,
 				0CAFD7272494F04D00ED5E87 /* Info.plist */,
@@ -131,6 +134,7 @@
 				0CAFD7262494F04D00ED5E87 /* LaunchScreen.storyboard in Resources */,
 				0CAFD7232494F04D00ED5E87 /* Assets.xcassets in Resources */,
 				0CAFD7212494F04900ED5E87 /* Main.storyboard in Resources */,
+				0CAFD732249A5FA500ED5E87 /* itemSound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

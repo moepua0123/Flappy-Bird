@@ -47,14 +47,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
        // 再生する音声ファイルを指定する
     
         
-       //let itemSoundURL = Bundle.main.url(forResource: "itemSound", withExtension: "mp3")
-       //do {
+       let itemSoundURL = Bundle.main.url(forResource: "itemSound", withExtension: "mp3")
+    do {
            // 効果音を鳴らす
-        //print(itemSoundURL)
-           //itemPlayer = try AVAudioPlayer(contentsOf: itemSoundURL!)
-      // } catch {
-           //print("error...")
-       //}
+        print(itemSoundURL)
+           itemPlayer = try AVAudioPlayer(contentsOf: itemSoundURL!)
+      } catch {
+           print("error...")
+        }
        
        
         
@@ -429,7 +429,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             itemScore += 1
             itemScoreLabelNode.text = "Item Score:\(itemScore)"
         
-            //itemPlayer?.play()
+            itemPlayer?.play()
             //アイテムが消える
             //contact.bodyA.node?.removeFromParent()
             //contact.bodyB.node?.removeFromParent()
