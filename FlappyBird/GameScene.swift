@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate  {
     //node=アニメーションや物体を表示させる役割
@@ -14,6 +15,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     var wallNode:SKNode!
     var bird:SKSpriteNode!
     var itemNode:SKNode!//追加
+    
+    var itemPlayer: AVAudioPlayer! = nil
+    var bgmPlayer: AVAudioPlayer! = nil
+    var attackPlayer: AVAudioPlayer! = nil
     
     // 衝突判定カテゴリー　32桁のどこに1があるかで衝突相手を判断する
     let birdCategory: UInt32 = 1 << 0       // 0...00001
@@ -38,6 +43,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     
     // SKView上にシーンが表示されたときに呼ばれるメソッド
     override func didMove(to view: SKView) {
+        // 再生する音声ファイルを指定する
+       // 再生する音声ファイルを指定する
+    
+        
+       //let itemSoundURL = Bundle.main.url(forResource: "itemSound", withExtension: "mp3")
+       //do {
+           // 効果音を鳴らす
+        //print(itemSoundURL)
+           //itemPlayer = try AVAudioPlayer(contentsOf: itemSoundURL!)
+      // } catch {
+           //print("error...")
+       //}
+       
+       
         
         // 重力を設定
         physicsWorld.gravity = CGVector(dx: 0, dy: -4)
@@ -378,7 +397,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     //didBegin(_:)メソッド=衝突時に呼ばれる
 
     func didBegin(_ contact: SKPhysicsContact) {
-        // ゲームオーバーのときは何もしない（壁にあったあとに地面にも必ず衝突するのでそこで2度めの処理を行わないようにするため）
+        //ゲームオーバーのときは何もしない（壁にあったあとに地面にも必ず衝突するのでそこで2度めの処理を行わないようにするため）
+       
+        
+        
         if scrollNode.speed <= 0 {
             return
         }
@@ -401,24 +423,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             }
             
         }else if (contact.bodyA.categoryBitMask & itemScoreCategory) == itemScoreCategory || (contact.bodyB.categoryBitMask & itemScoreCategory) == itemScoreCategory {
-            //アイテムが消える
-            //contact.bodyA.node?.removeFromParent()
+            
             //アイテムに衝突した
             print("ItemGet")
             itemScore += 1
             itemScoreLabelNode.text = "Item Score:\(itemScore)"
         
-            //アイテムが消える
-            contact.bodyA.node?.removeFromParent()
-            contact.bodyB.node?.removeFromParent()
             //itemPlayer?.play()
-            
-            //if (contact.bodyA.categoryBitMask & itemScoreCategory) == itemScoreCategory {
+            //アイテムが消える
             //contact.bodyA.node?.removeFromParent()
-            //}
-            //if (contact.bodyB.categoryBitMask & itemScoreCategory) == itemScoreCategory {
             //contact.bodyB.node?.removeFromParent()
-            //}
+            
+            
+            if (contact.bodyA.categoryBitMask & itemScoreCategory) == itemScoreCategory {
+            contact.bodyA.node?.removeFromParent()
+            }
+            
+            if (contact.bodyB.categoryBitMask & itemScoreCategory) == itemScoreCategory {
+            contact.bodyB.node?.removeFromParent()
+            }
             
         } else {
             // 壁か地面と衝突した
@@ -441,6 +464,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     func restart() {
         score = 0
         scoreLabelNode.text = "Score:\(score)"
+        
+        itemScore = 0
+        itemScoreLabelNode.text = String("Item Score:\(itemScore)")
         
         bird.position = CGPoint(x: self.frame.size.width * 0.2, y:self.frame.size.height * 0.7)
         bird.physicsBody?.velocity = CGVector.zero
